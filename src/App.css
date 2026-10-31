@@ -1,0 +1,169 @@
+@import url("https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600&family=Quicksand:wght@500;600;700&display=swap");
+
+:root {
+  --fond: #fdeef3;
+  --surface: #fff8fb;
+  --rose: #f5a9c4;
+  --rose-fort: #e97ba3;
+  --rose-trait: #f7d3e0;
+  --texte: #7a3b57;
+  --doux: #b07a92;
+  --grand: #dc5a86;
+  --petit: #9a85d6;
+  --ok: #55b387;
+  --police: "Quicksand", system-ui, sans-serif;
+  --titre: "Fredoka", "Quicksand", system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+/* Centrage de toute la page, au milieu de l'écran */
+html, body { min-height: 100%; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  background: linear-gradient(160deg, #ffeef4 0%, #fde2ec 55%, #f9dbe9 100%);
+  color: var(--texte);
+  font-family: var(--police);
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+#root {
+  width: 100%;
+  display: flex;
+}
+
+.app {
+  width: 100%;
+  max-width: 32rem;
+  margin: auto;            /* centre horizontalement et verticalement */
+  padding: 2rem 1.25rem;
+  text-align: center;
+}
+
+h1 {
+  font-family: var(--titre);
+  font-weight: 600;
+  font-size: clamp(2.2rem, 9vw, 3.2rem);
+  line-height: 1.1;
+  color: var(--rose-fort);
+  margin: 0 0 1.25rem;
+  text-shadow: 0 3px 0 #fff, 0 6px 14px rgba(233, 123, 163, .25);
+}
+
+h2 { font-family: var(--titre); font-weight: 500; font-size: 1.1rem; margin: 0 0 .6rem; }
+
+button {
+  font: inherit;
+  font-weight: 700;
+  background: var(--rose-fort);
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  padding: .65rem 1.4rem;
+  cursor: pointer;
+  box-shadow: 0 4px 0 #cf5e88, 0 8px 16px rgba(233, 123, 163, .3);
+  transition: transform .12s ease, box-shadow .12s ease;
+}
+button:hover { transform: translateY(-1px); }
+button:active { transform: translateY(3px); box-shadow: 0 1px 0 #cf5e88; }
+button.secondaire {
+  background: var(--surface);
+  color: var(--texte);
+  box-shadow: 0 4px 0 var(--rose-trait), 0 8px 16px rgba(233, 123, 163, .15);
+}
+:focus-visible { outline: 3px solid var(--petit); outline-offset: 3px; }
+
+.intro { color: var(--doux); max-width: 30ch; margin: 0 auto; }
+.niveau { color: var(--doux); margin: 0 0 1.25rem; }
+
+/* Choix du niveau */
+.niveaux { display: grid; gap: .9rem; margin-top: 1.5rem; }
+.carte-niveau {
+  display: grid; justify-items: center; gap: .1rem;
+  background: var(--surface); color: var(--texte);
+  border: 2px solid var(--rose-trait); border-radius: 24px;
+  padding: 1rem 1.1rem;
+  box-shadow: 0 6px 18px rgba(233, 123, 163, .18);
+}
+.carte-niveau:hover { border-color: var(--rose); }
+.carte-niveau:active { box-shadow: 0 2px 8px rgba(233, 123, 163, .18); }
+.carte-titre { font-family: var(--titre); font-size: 1.35rem; font-weight: 600; color: var(--rose-fort); }
+.carte-record { color: var(--doux); font-weight: 500; font-size: .9rem; }
+
+/* Règle graduée */
+.regle { margin-bottom: 1.5rem; }
+.regle-piste {
+  position: relative; height: 16px; border-radius: 999px;
+  background: var(--rose-trait);
+  box-shadow: inset 0 2px 4px rgba(233, 123, 163, .2);
+}
+.regle-zone {
+  position: absolute; top: 0; bottom: 0; border-radius: 999px;
+  background: linear-gradient(90deg, var(--rose), var(--rose-fort));
+  transition: left .35s ease, width .35s ease;
+}
+.regle-bornes {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: .4rem; font-size: .85rem; color: var(--doux);
+}
+.regle-plage { color: var(--texte); font-weight: 700; }
+
+/* Indice et tentatives */
+.indice {
+  font-family: var(--titre); font-weight: 600;
+  font-size: 2rem; margin: 0 0 .25rem; min-height: 2.6rem; color: var(--doux);
+}
+.indice-grand { color: var(--grand); }
+.indice-petit { color: var(--petit); }
+.restantes { margin: 0 0 1.25rem; color: var(--doux); }
+.restantes strong { color: var(--rose-fort); font-size: 1.3rem; }
+
+/* Saisie */
+.saisie label { display: block; margin-bottom: .4rem; }
+.saisie-ligne { display: flex; justify-content: center; gap: .6rem; }
+.saisie input {
+  width: 8.5rem; min-width: 0; text-align: center;
+  font: inherit; font-size: 1.4rem; font-weight: 700;
+  padding: .5rem .75rem; color: var(--texte);
+  background: var(--surface);
+  border: 2px solid var(--rose); border-radius: 999px;
+}
+.saisie input::placeholder { color: var(--rose-trait); }
+.erreur { color: var(--grand); margin: .6rem 0 0; }
+
+/* Historique */
+.historique { margin-top: 2rem; padding-top: 1.25rem; border-top: 2px dashed var(--rose-trait); }
+.historique ul {
+  list-style: none; padding: 0; margin: 0;
+  display: flex; flex-wrap: wrap; justify-content: center; gap: .5rem;
+}
+.historique li {
+  padding: .2rem .8rem; border-radius: 999px; font-weight: 700;
+  background: var(--surface); border: 2px solid var(--rose-trait);
+}
+.historique li.grand { border-color: var(--grand); color: var(--grand); }
+.historique li.petit { border-color: var(--petit); color: var(--petit); }
+.historique li.ok { border-color: var(--ok); color: var(--ok); }
+
+/* Résultat */
+.resultat {
+  padding: 1.5rem 1.25rem; border-radius: 28px; border: 2px solid;
+  background: var(--surface);
+  box-shadow: 0 8px 24px rgba(233, 123, 163, .2);
+}
+.resultat h2 { font-size: 2.1rem; font-weight: 600; }
+.resultat p { margin: 0 0 .5rem; }
+.victoire { border-color: var(--ok); }
+.victoire h2 { color: var(--ok); }
+.defaite { border-color: var(--grand); }
+.defaite h2 { color: var(--grand); }
+.record { font-weight: 700; color: var(--rose-fort); }
+.actions { display: flex; flex-wrap: wrap; justify-content: center; gap: .75rem; margin-top: 1.1rem; }
+
+@media (prefers-reduced-motion: reduce) {
+  .regle-zone, button { transition: none; }
+}
