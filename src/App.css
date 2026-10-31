@@ -17,7 +17,6 @@
 
 * { box-sizing: border-box; }
 
-/* Centrage de toute la page, au milieu de l'écran */
 html, body { min-height: 100%; }
 
 body {
@@ -94,7 +93,7 @@ button.secondaire {
 .carte-titre { font-family: var(--titre); font-size: 1.35rem; font-weight: 600; color: var(--rose-fort); }
 .carte-record { color: var(--doux); font-weight: 500; font-size: .9rem; }
 
-/* Règle graduée */
+
 .regle { margin-bottom: 1.5rem; }
 .regle-piste {
   position: relative; height: 16px; border-radius: 999px;
@@ -122,7 +121,7 @@ button.secondaire {
 .restantes { margin: 0 0 1.25rem; color: var(--doux); }
 .restantes strong { color: var(--rose-fort); font-size: 1.3rem; }
 
-/* Saisie */
+
 .saisie label { display: block; margin-bottom: .4rem; }
 .saisie-ligne { display: flex; justify-content: center; gap: .6rem; }
 .saisie input {
@@ -135,7 +134,7 @@ button.secondaire {
 .saisie input::placeholder { color: var(--rose-trait); }
 .erreur { color: var(--grand); margin: .6rem 0 0; }
 
-/* Historique */
+
 .historique { margin-top: 2rem; padding-top: 1.25rem; border-top: 2px dashed var(--rose-trait); }
 .historique ul {
   list-style: none; padding: 0; margin: 0;
@@ -149,7 +148,7 @@ button.secondaire {
 .historique li.petit { border-color: var(--petit); color: var(--petit); }
 .historique li.ok { border-color: var(--ok); color: var(--ok); }
 
-/* Résultat */
+
 .resultat {
   padding: 1.5rem 1.25rem; border-radius: 28px; border: 2px solid;
   background: var(--surface);
@@ -166,4 +165,18 @@ button.secondaire {
 
 @media (prefers-reduced-motion: reduce) {
   .regle-zone, button { transition: none; }
+}
+
+
+
+body::after {
+  content: "";
+  position: fixed;
+  left: 12px;
+  bottom: 0;
+  width: clamp(80px, 16vw, 170px);
+  aspect-ratio: 1;
+  background: url("/src/img/chat.png") no-repeat bottom left / contain;
+  pointer-events: none;   /* ne bloque jamais les clics */
+  z-index: 10;
 }
